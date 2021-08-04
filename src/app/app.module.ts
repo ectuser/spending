@@ -10,6 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaigaModule } from './taiga.module';
 import { SharedModule } from './shared/shared.module';
+import { reducers } from './reducers';
+import { CategoriesEffects } from './reducers/categories/categories.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,9 +21,9 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     TaigaModule,
     SharedModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([CategoriesEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

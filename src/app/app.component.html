@@ -1,9 +1,12 @@
 <tui-root>
-  <button tuiButton type="button">Start</button>
-
   <!--
    If you need, you can add something between Taiga portal layers:
   -->
+
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+
   <ng-container ngProjectAs="tuiOverDialogs">
     <!-- Content over dialogs-->
   </ng-container>

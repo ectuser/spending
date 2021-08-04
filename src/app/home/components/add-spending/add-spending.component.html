@@ -1,0 +1,12 @@
+<div [formGroup]="form">
+  <h1>Add spending</h1>
+  <tui-select formControlName="selectedCategoryId">
+    Choose the category
+    <ng-template tuiDataList>
+      <tui-data-list>
+        <button *ngFor="let item of categories$ | async" tuiOption [value]="item.id">{{item.name}}</button>
+      </tui-data-list>
+    </ng-template>
+  </tui-select>
+  <tui-input-number formControlName="amount">Your spending</tui-input-number>
+</div>

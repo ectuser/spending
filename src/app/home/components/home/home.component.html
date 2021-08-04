@@ -1,0 +1,10 @@
+<div class="content">
+  <section class="content__data">
+    <div *ngFor="let category of (categories$ | async)">{{category.name}}</div>
+  </section>
+
+  <section class="content__buttons">
+    <button tuiButton type="button">+</button>
+    <button tuiButton type="button">-</button>
+  </section>
+</div>

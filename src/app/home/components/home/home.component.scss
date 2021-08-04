@@ -1,0 +1,17 @@
+.content {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+
+  &__data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
