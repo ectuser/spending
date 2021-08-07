@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TuiButtonModule, TuiDataListModule, TuiDialogModule, TuiNotificationsModule, TuiRootModule } from '@taiga-ui/core';
-import { TuiDataListWrapperModule, TuiInputNumberModule, TuiSelectModule } from '@taiga-ui/kit';
+import {
+  TuiButtonModule,
+  TuiDataListModule,
+  TuiDialogModule,
+  TuiHostedDropdownModule,
+  TuiLinkModule,
+  TuiNotificationsModule,
+  TuiRootModule,
+  TuiScrollbarModule,
+  TuiSvgModule,
+} from '@taiga-ui/core';
+import { TuiDataListWrapperModule, TuiInputNumberModule, TuiIslandModule, TuiMarkerIconModule, TuiSelectModule } from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [],
@@ -15,6 +25,12 @@ import { TuiDataListWrapperModule, TuiInputNumberModule, TuiSelectModule } from 
     TuiDataListModule,
     TuiDataListWrapperModule,
     TuiInputNumberModule,
+    TuiIslandModule,
+    TuiSvgModule,
+    TuiMarkerIconModule,
+    TuiHostedDropdownModule,
+    TuiLinkModule,
+    TuiScrollbarModule,
   ],
   exports: [
     TuiRootModule,
@@ -25,6 +41,12 @@ import { TuiDataListWrapperModule, TuiInputNumberModule, TuiSelectModule } from 
     TuiDataListModule,
     TuiDataListWrapperModule,
     TuiInputNumberModule,
+    TuiIslandModule,
+    TuiSvgModule,
+    TuiMarkerIconModule,
+    TuiHostedDropdownModule,
+    TuiLinkModule,
+    TuiScrollbarModule,
   ],
 })
 export class TaigaModule {}

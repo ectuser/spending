@@ -7,7 +7,9 @@ import { generateId } from '../../core/utils/generate-id.util';
 
 export const categoriesFeatureKey = 'categories';
 
-export interface CategoriesState extends EntityState<CategoryModel> {}
+export interface CategoriesState extends EntityState<CategoryModel> {
+  selectedCategoryId?: string;
+}
 
 export const categoriesAdapter = createEntityAdapter<CategoryModel>();
 

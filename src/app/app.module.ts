@@ -12,6 +12,9 @@ import { TaigaModule } from './taiga.module';
 import { SharedModule } from './shared/shared.module';
 import { reducers } from './reducers';
 import { CategoriesEffects } from './reducers/categories/categories.effects';
+import { SpendingEffects } from './reducers/spending/spending.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { TUI_SANITIZER } from '@taiga-ui/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +26,8 @@ import { CategoriesEffects } from './reducers/categories/categories.effects';
     SharedModule,
     StoreModule.forRoot(reducers, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([CategoriesEffects]),
+    EffectsModule.forRoot([CategoriesEffects, SpendingEffects]),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

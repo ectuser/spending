@@ -1,10 +1,10 @@
 <div class="content">
-  <section class="content__data">
-    <div *ngFor="let category of (categories$ | async)">{{category.name}}</div>
-  </section>
+  <tui-scrollbar class="content__data">
+    <app-category-card class="card" *ngFor="let category of (categories$ | async)" [category]="category"></app-category-card>
+  </tui-scrollbar>
 
   <section class="content__buttons">
     <button tuiButton type="button">+</button>
-    <button tuiButton type="button">-</button>
+    <button tuiButton [routerLink]="['add-spending']" type="button">-</button>
   </section>
 </div>

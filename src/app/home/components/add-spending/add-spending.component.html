@@ -1,6 +1,6 @@
 <div [formGroup]="form">
   <h1>Add spending</h1>
-  <tui-select formControlName="selectedCategoryId">
+  <tui-select formControlName="categoryId">
     Choose the category
     <ng-template tuiDataList>
       <tui-data-list>
@@ -9,4 +9,5 @@
     </ng-template>
   </tui-select>
   <tui-input-number formControlName="amount">Your spending</tui-input-number>
+  <button tuiButton type="button" (click)="addSpending()">Confirm</button>
 </div>

@@ -1,0 +1,26 @@
+<ng-container *ngIf="category">
+  <tui-island class="tui-space_bottom-3" [routerLink]="['add-spending']" [queryParams]="{categoryId: category.id}">
+    <div class="tui-island__content">
+      <div class="tui-island__figure">
+        <div style="height: 24px; width: 24px">
+          <tui-hosted-dropdown [(open)]="menuOpen" [content]="dropdown" (click)="onMenuClick($event)">
+            <tui-svg src="tuiIconMoreVer"></tui-svg>
+          </tui-hosted-dropdown>
+        </div>
+      </div>
+      <div>
+        <p class="tui-island__category">{{category.name}}</p>
+        <h3 class="tui-island__title">{{category.amount}}</h3>
+        <p class="tui-island__paragraph">{{category.percent | percent}}</p>
+      </div>
+    </div>
+  </tui-island>
+
+  <ng-template #dropdown>
+    <tui-data-list>
+      <button tuiOption [routerLink]="['add-spending']" [queryParams]="{categoryId: category.id}">Add expanse</button>
+      <button tuiOption>Show expanses</button>
+      <button tuiOption>Edit the category</button>
+    </tui-data-list>
+  </ng-template>
+</ng-container>

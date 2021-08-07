@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectAllCategories } from '../../../reducers/categories/categories.selectors';
+import { tuiIconMoreVer } from '@taiga-ui/icons';
+import { selectSortedCategoriesWithSpending } from '../../../reducers/app-selectors';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { selectAllCategories } from '../../../reducers/categories/categories.sel
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  readonly categories$ = this.store.select(selectAllCategories);
+  readonly menuIcon = tuiIconMoreVer;
+  readonly categories$ = this.store.select(selectSortedCategoriesWithSpending);
   constructor(private store: Store) {}
 }
