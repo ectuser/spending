@@ -20,7 +20,7 @@
     <tui-data-list>
       <button tuiOption [routerLink]="['spending', 'new']" [queryParams]="{categoryId: category.id}">Add expanse</button>
       <button tuiOption [routerLink]="['expenses']" [queryParams]="{categoryId: category.id}">Show expanses</button>
-      <button tuiOption>Edit the category</button>
+      <button tuiOption [routerLink]="['..', 'settings', 'categories', category.id]">Edit the category</button>
     </tui-data-list>
   </ng-template>
 </ng-container>

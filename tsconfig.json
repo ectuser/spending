@@ -23,6 +23,7 @@
     "paths": {
       "@shared/*": ["src/app/shared/*"],
       "@home/*": ["src/app/home/*"],
+      "@settings/*": ["src/app/settings/*"]
     }
   },
   "angularCompilerOptions": {

@@ -7,6 +7,6 @@ export const loadCategories = createAction('[Categories] Load categories');
 export const loadCategoriesSuccess = createAction('[Categories] Load categories success', props<{ categories: CategoryModel[] }>());
 export const loadCategoriesFailure = createAction('[Categories] Load categories failure');
 
-export const addCategory = createAction('[Categories] Add category', props<{ category: BaseCategory }>());
+export const upsertCategory = createAction('[Categories] Upsert category', props<{ category: BaseCategory & { id?: string } }>());
 export const removeCategory = createAction('[Categories] Remove category', props<{ id: string }>());
 export const changeCategory = createAction('[Categories] Change category', props<{ category: Update<BaseCategory> }>());

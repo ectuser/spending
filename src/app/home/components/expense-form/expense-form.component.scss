@@ -1,11 +1,10 @@
 .form {
-  position: relative;
-  height: 100%;
 
   &__button {
-    position: absolute;
-    bottom: 50px;
     width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 16px;
   }
 
   &__item {

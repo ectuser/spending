@@ -1,0 +1,9 @@
+<div class="category">
+  <h1>Category {{(category$ | async)?.name}}</h1>
+
+  <div [formGroup]="form">
+    <tui-input class="b-form" formControlName="name"> Category name </tui-input>
+  </div>
+
+  <button class="category__button" tuiButton type="button" (click)="saveCategory()">Save</button>
+</div>

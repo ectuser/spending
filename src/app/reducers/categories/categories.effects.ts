@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { loadCategories, loadCategoriesFailure, loadCategoriesSuccess } from './categories.actions';
-import { map } from 'rxjs/operators';
+import { loadCategories, loadCategoriesFailure, loadCategoriesSuccess, removeCategory, upsertCategory } from './categories.actions';
+import { map, withLatestFrom } from 'rxjs/operators';
 import { categoriesFeatureKey } from './categories.reducer';
 import { CategoryModel } from '../../core/interfaces/category.interface';
 import { defaultCategories } from '../../core/consts/default-categories';
+import { Store } from '@ngrx/store';
+import { selectAllCategories } from './categories.selectors';
 
 @Injectable()
 export class CategoriesEffects {
@@ -29,5 +31,18 @@ export class CategoriesEffects {
     );
   });
 
-  constructor(private actions$: Actions) {}
+  actionsWithCategories$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(upsertCategory.type, removeCategory.type),
+        withLatestFrom(this.store.select(selectAllCategories)),
+        map((categories) => {
+          localStorage.setItem(categoriesFeatureKey, JSON.stringify(categories));
+        })
+      );
+    },
+    { dispatch: false }
+  );
+
+  constructor(private actions$: Actions, private store: Store) {}
 }

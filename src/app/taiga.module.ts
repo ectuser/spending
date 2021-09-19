@@ -14,6 +14,7 @@ import {
 import {
   TuiDataListWrapperModule,
   TuiInputDateModule,
+  TuiInputModule,
   TuiInputNumberModule,
   TuiIslandModule,
   TuiMarkerIconModule,
@@ -39,6 +40,7 @@ import {
     TuiLinkModule,
     TuiScrollbarModule,
     TuiInputDateModule,
+    TuiInputModule,
   ],
   exports: [
     TuiRootModule,
@@ -56,6 +58,7 @@ import {
     TuiLinkModule,
     TuiScrollbarModule,
     TuiInputDateModule,
+    TuiInputModule,
   ],
 })
 export class TaigaModule {}
