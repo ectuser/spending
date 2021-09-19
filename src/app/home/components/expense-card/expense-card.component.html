@@ -1,0 +1,15 @@
+<ng-container *ngIf="expense">
+  <tui-island class="tui-space_bottom-3 card" routerLink="">
+    <div class="tui-island__content">
+      <div class="tui-island__figure">
+        <div (click)="deleteExpense()" style="height: 24px; width: 24px">
+          <tui-svg src="tuiIconTrashLarge"></tui-svg>
+        </div>
+      </div>
+      <div>
+        <h3 class="tui-island__title">{{expense.amount}}</h3>
+        <p class="tui-island__paragraph">{{expense.date | date: 'MM/dd/yyyy'}}</p>
+      </div>
+    </div>
+  </tui-island>
+</ng-container>

@@ -8,3 +8,7 @@ export const { selectAll: selectAllCategories, selectEntities: selectCategoriesE
   categoriesAdapter.getSelectors(selectCategoriesState);
 
 export const getSelectedCategoryId = selectQueryParam('categoryId');
+
+export const selectCategoryById = createSelector(selectCategoriesEntities, getSelectedCategoryId, (categories, categoryId) =>
+  categoryId ? categories[categoryId] : undefined
+);

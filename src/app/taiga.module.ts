@@ -11,7 +11,14 @@ import {
   TuiScrollbarModule,
   TuiSvgModule,
 } from '@taiga-ui/core';
-import { TuiDataListWrapperModule, TuiInputNumberModule, TuiIslandModule, TuiMarkerIconModule, TuiSelectModule } from '@taiga-ui/kit';
+import {
+  TuiDataListWrapperModule,
+  TuiInputDateModule,
+  TuiInputNumberModule,
+  TuiIslandModule,
+  TuiMarkerIconModule,
+  TuiSelectModule,
+} from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [],
@@ -31,6 +38,7 @@ import { TuiDataListWrapperModule, TuiInputNumberModule, TuiIslandModule, TuiMar
     TuiHostedDropdownModule,
     TuiLinkModule,
     TuiScrollbarModule,
+    TuiInputDateModule,
   ],
   exports: [
     TuiRootModule,
@@ -47,6 +55,7 @@ import { TuiDataListWrapperModule, TuiInputNumberModule, TuiIslandModule, TuiMar
     TuiHostedDropdownModule,
     TuiLinkModule,
     TuiScrollbarModule,
+    TuiInputDateModule,
   ],
 })
 export class TaigaModule {}

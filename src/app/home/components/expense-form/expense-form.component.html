@@ -1,0 +1,13 @@
+<div class="form" [formGroup]="form">
+  <tui-input-date class="form__item" formControlName="date"> Expense date </tui-input-date>
+  <tui-select class="form__item form__category" formControlName="categoryId">
+    Choose the category
+    <ng-template tuiDataList>
+      <tui-data-list>
+        <button *ngFor="let item of categories" tuiOption [value]="item.id">{{item.name}}</button>
+      </tui-data-list>
+    </ng-template>
+  </tui-select>
+  <tui-input-number class="form__item" #amountInput formControlName="amount">Your spending</tui-input-number>
+  <button tuiButton type="button" (click)="doAction()" class="form__button">Confirm</button>
+</div>

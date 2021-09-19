@@ -1,0 +1,9 @@
+<div>
+  <h1>{{(category$ | async)?.name}}</h1>
+  <h3>Total: {{total$ | async}}</h3>
+  <app-expense-card
+    *ngFor="let expense of (expenses$ | async)"
+    [expense]="expense"
+    (deleteExpenseEmitter)="deleteExpense($event)"
+  ></app-expense-card>
+</div>

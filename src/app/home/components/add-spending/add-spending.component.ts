@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getSelectedCategoryId, selectAllCategories, selectCategoriesEntities } from '../../../reducers/categories/categories.selectors';
 import { addSpending } from '../../../reducers/spending/spending.actions';
@@ -9,6 +8,8 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { Dictionary } from '@ngrx/entity';
 import { CategoryModel } from '../../../core/interfaces/category.interface';
 import { Router } from '@angular/router';
+import { TuiDay } from '@taiga-ui/cdk';
+import { CreateSpending } from '../../../core/interfaces/create-spending.interface';
 
 @Component({
   selector: 'app-add-spending',
@@ -21,14 +22,12 @@ export class AddSpendingComponent implements OnInit, OnDestroy {
   readonly categoriesEntities$ = this.store.select(selectCategoriesEntities);
   readonly selectedCategoryId$ = this.store.select(getSelectedCategoryId);
 
-  form = new FormGroup({
-    categoryId: new FormControl('', Validators.required),
-    amount: new FormControl(0, Validators.required),
-  });
+  currentDate = TuiDay.fromLocalNativeDate(new Date());
+  selectedCategory?: string;
 
   private unsubscribe = new Subject();
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(private store: Store, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     combineLatest([this.selectedCategoryId$, this.categoriesEntities$])
@@ -40,7 +39,8 @@ export class AddSpendingComponent implements OnInit, OnDestroy {
       )
       .subscribe((id) => {
         if (id) {
-          this.form.controls.categoryId?.patchValue(id);
+          this.selectedCategory = id;
+          this.cdr.detectChanges();
         }
       });
   }
@@ -50,8 +50,8 @@ export class AddSpendingComponent implements OnInit, OnDestroy {
     this.unsubscribe.complete();
   }
 
-  addSpending(): void {
-    this.store.dispatch(addSpending({ spending: new Spending({ ...this.form.value, date: new Date() }) }));
+  addSpending(model: CreateSpending): void {
+    this.store.dispatch(addSpending({ spending: new Spending({ ...model }) }));
     this.router.navigate(['/home']);
   }
 }
