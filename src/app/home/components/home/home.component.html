@@ -1,4 +1,5 @@
 <div class="content">
+  <app-period></app-period>
   <app-category-card class="card" *ngFor="let category of (categories$ | async)" [category]="category"></app-category-card>
 
   <section class="content__buttons">

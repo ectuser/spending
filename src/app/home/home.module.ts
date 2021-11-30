@@ -9,9 +9,10 @@ import { CategoryCardComponent } from './components/category-card/category-card.
 import { ExpensesComponent } from './components/expenses/expenses.component';
 import { ExpenseCardComponent } from './components/expense-card/expense-card.component';
 import { ExpenseFormComponent } from './components/expense-form/expense-form.component';
+import { PeriodComponent } from './components/period/period.component';
 
 @NgModule({
-  declarations: [HomeComponent, AddSpendingComponent, CategoryCardComponent, ExpensesComponent, ExpenseCardComponent, ExpenseFormComponent],
+  declarations: [HomeComponent, AddSpendingComponent, CategoryCardComponent, ExpensesComponent, ExpenseCardComponent, ExpenseFormComponent, PeriodComponent],
   imports: [CommonModule, HomeRoutingModule, SharedModule, TaigaModule],
 })
 export class HomeModule {}

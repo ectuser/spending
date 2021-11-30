@@ -1,0 +1,7 @@
+<div *ngIf="currentPeriod$ | async as currentPeriod" class="period">
+  <span (click)="periodBack()">L</span>
+  <span>{{currentPeriod.fromDate | date: 'dd.MM.yyyy'}}</span>
+  <span>&nbsp;-&nbsp;</span>
+  <span>{{currentPeriod.toDate | date: 'dd.MM.yyyy'}}</span>
+  <span (click)="periodNext()">R</span>
+</div>

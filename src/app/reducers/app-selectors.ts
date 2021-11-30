@@ -2,8 +2,17 @@ import { createSelector } from '@ngrx/store';
 import { selectAllCategories } from './categories/categories.selectors';
 import { selectAllSpending } from './spending/spending.selectors';
 import { CategoryCard } from '../core/interfaces/category-card.interface';
+import { selectCurrentPeriodDates } from './settings/settings.selectors';
+import * as dayjs from 'dayjs';
 
-export const selectCategoriesWithSpending = createSelector(selectAllCategories, selectAllSpending, (cat, sp) => {
+export const selectSpendingByDates = createSelector(selectCurrentPeriodDates, selectAllSpending, (dates, spending) => {
+  return spending.filter((el) => {
+    const spendingDate = dayjs(el.date);
+    return spendingDate >= dayjs(dates.fromDate) && spendingDate <= dayjs(dates.toDate);
+  });
+});
+
+export const selectCategoriesWithSpending = createSelector(selectAllCategories, selectSpendingByDates, (cat, sp) => {
   const total = sp.reduce((curr, next) => curr + next.amount || 0, 0);
   return cat.map((category) => {
     const obj: CategoryCard = {
