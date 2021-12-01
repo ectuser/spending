@@ -1,10 +1,10 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { spendingFeatureKey, spendingReducer, SpendingState } from './spending/spending.reducer';
-import { categoriesFeatureKey, categoriesReducer, CategoriesState } from './categories/categories.reducer';
-import { routerReducer, RouterReducerState } from '@ngrx/router-store';
+import { SpendingState, spendingFeatureKey, spendingReducer } from './spending/spending.reducer';
+import { CategoriesState, categoriesFeatureKey, categoriesReducer } from './categories/categories.reducer';
+import { RouterReducerState, routerReducer } from '@ngrx/router-store';
 import { routerFeatureKey } from './router/router.selectors';
-import { settingsFeatureKey, settingsReducer, SettingsState } from './settings/settings.reducer';
+import { SettingsState, settingsFeatureKey, settingsReducer } from './settings/settings.reducer';
 
 export interface AppState {
   [routerFeatureKey]: RouterReducerState;

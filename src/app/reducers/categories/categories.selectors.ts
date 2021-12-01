@@ -1,4 +1,4 @@
-import { categoriesAdapter, categoriesFeatureKey, CategoriesState } from './categories.reducer';
+import { CategoriesState, categoriesAdapter, categoriesFeatureKey } from './categories.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { selectQueryParam, selectRouteParam } from '../router/router.selectors';
 

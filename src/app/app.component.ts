@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadCategories } from './reducers/categories/categories.actions';
 import { loadSpending } from './reducers/spending/spending.actions';
-import { selectCategoriesWithSpending } from './reducers/app-selectors';
 
 @Component({
   selector: 'app-root',

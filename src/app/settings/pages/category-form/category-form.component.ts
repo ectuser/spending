@@ -18,12 +18,12 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
     name: new FormControl('', Validators.required),
   });
 
-  private unsubscribe = new Subject();
+  private unsubscribe$ = new Subject();
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.category$.pipe(takeUntil(this.unsubscribe)).subscribe((category) => {
+    this.category$.pipe(takeUntil(this.unsubscribe$)).subscribe((category) => {
       if (category) {
         this.processForm(category);
       }
@@ -31,8 +31,8 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   saveCategory(): void {

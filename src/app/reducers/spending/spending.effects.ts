@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
 import { addSpending, changeSpending, deleteSpending, loadSpending, loadSpendingFailure, loadSpendingSuccess } from './spending.actions';
-import { map, withLatestFrom } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { spendingFeatureKey } from './spending.reducer';
 import { SpendingStorage } from '../../core/interfaces/localstorage-models/spending-storage.interface';
 import { Store } from '@ngrx/store';
@@ -29,7 +29,7 @@ export class SpendingEffects {
     () => {
       return this.actions$.pipe(
         ofType(changeSpending.type, deleteSpending.type, addSpending.type),
-        withLatestFrom(this.store.select(selectAllSpending)),
+        concatLatestFrom(() => this.store.select(selectAllSpending)),
         map(([_, spending]) => {
           const transformed = spending.map((sp) => sp.transformToSaveModel());
           localStorage.setItem(spendingFeatureKey, JSON.stringify(transformed));

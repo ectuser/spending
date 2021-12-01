@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { createEntityAdapter, EntityState } from '@ngrx/entity';
+import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { addSpending, changeSpending, deleteSpending, loadSpendingSuccess } from './spending.actions';
 import { Spending } from '../../core/classes/spending';
 

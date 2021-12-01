@@ -1,13 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
-  ViewChild,
-  EventEmitter,
-  OnChanges,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { TuiDay } from '@taiga-ui/cdk';
 import { CategoryModel } from '../../../core/interfaces/category.interface';

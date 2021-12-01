@@ -9,12 +9,11 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaigaModule } from './taiga.module';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { reducers } from './reducers';
 import { CategoriesEffects } from './reducers/categories/categories.effects';
 import { SpendingEffects } from './reducers/spending/spending.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { TUI_SANITIZER } from '@taiga-ui/core';
 
 @NgModule({
   declarations: [AppComponent],

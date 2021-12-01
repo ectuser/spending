@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { spendingEntityAdapter, spendingFeatureKey, SpendingState } from './spending.reducer';
+import { SpendingState, spendingEntityAdapter, spendingFeatureKey } from './spending.reducer';
 import { getSelectedCategoryId } from '../categories/categories.selectors';
 
 const selectSpending = createFeatureSelector<SpendingState>(spendingFeatureKey);

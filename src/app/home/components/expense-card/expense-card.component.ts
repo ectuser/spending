@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, EventEmitter, Component, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Spending } from '../../../core/classes/spending';
 
 @Component({

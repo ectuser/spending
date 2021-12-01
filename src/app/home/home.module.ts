@@ -12,7 +12,15 @@ import { ExpenseFormComponent } from './components/expense-form/expense-form.com
 import { PeriodComponent } from './components/period/period.component';
 
 @NgModule({
-  declarations: [HomeComponent, AddSpendingComponent, CategoryCardComponent, ExpensesComponent, ExpenseCardComponent, ExpenseFormComponent, PeriodComponent],
+  declarations: [
+    HomeComponent,
+    AddSpendingComponent,
+    CategoryCardComponent,
+    ExpensesComponent,
+    ExpenseCardComponent,
+    ExpenseFormComponent,
+    PeriodComponent,
+  ],
   imports: [CommonModule, HomeRoutingModule, SharedModule, TaigaModule],
 })
 export class HomeModule {}

@@ -8,7 +8,10 @@
       "files": [
         "*.ts"
       ],
+      "parser": "@typescript-eslint/parser",
       "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module",
         "project": [
           "tsconfig.json"
         ],
@@ -21,7 +24,8 @@
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:prettier/recommended",
-        "plugin:ngrx/recommended"
+        "plugin:ngrx/recommended",
+        "plugin:rxjs/recommended"
       ],
       "rules": {
         "@angular-eslint/component-selector": [
@@ -144,9 +148,15 @@
           }
         ],
         "no-unused-expression": "off",
+        "unused-imports/no-unused-imports": "error",
         "@typescript-eslint/no-unused-expressions": [
           "warn"
         ],
+        "rxjs/finnish": ["warn", {
+          "names": {
+            "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate|store)$": false
+          }
+        }],
         "prettier/prettier": [
           "error",
           {
@@ -155,7 +165,7 @@
         ]
       },
       "plugins": [
-        "ngrx"
+        "ngrx", "unused-imports"
       ]
     },
     {

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { getSelectedCategoryId, selectAllCategories, selectCategoriesEntities } from '../../../reducers/categories/categories.selectors';
 import { addSpending } from '../../../reducers/spending/spending.actions';
 import { Spending } from '../../../core/classes/spending';
-import { combineLatest, Subject } from 'rxjs';
+import { Subject, combineLatest } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { Dictionary } from '@ngrx/entity';
 import { CategoryModel } from '../../../core/interfaces/category.interface';
@@ -25,7 +25,7 @@ export class AddSpendingComponent implements OnInit, OnDestroy {
   currentDate = TuiDay.fromLocalNativeDate(new Date());
   selectedCategory?: string;
 
-  private unsubscribe = new Subject();
+  private unsubscribe$ = new Subject();
 
   constructor(private store: Store, private router: Router, private cdr: ChangeDetectorRef) {}
 
@@ -35,7 +35,7 @@ export class AddSpendingComponent implements OnInit, OnDestroy {
         filter(([id, entities]) => !!id && !!Object.keys(entities).length && !!entities[id]),
         map(([id, entities]) => [id, entities] as [string, Dictionary<CategoryModel>]),
         map(([id, entities]) => entities[id]?.id),
-        takeUntil(this.unsubscribe)
+        takeUntil(this.unsubscribe$)
       )
       .subscribe((id) => {
         if (id) {
@@ -46,8 +46,8 @@ export class AddSpendingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   addSpending(model: CreateSpending): void {

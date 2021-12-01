@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { settingsFeatureKey, SettingsState } from './settings.reducer';
+import { SettingsState, settingsFeatureKey } from './settings.reducer';
 import * as dayjs from 'dayjs';
 
 const selectSettingsState = createFeatureSelector<SettingsState>(settingsFeatureKey);

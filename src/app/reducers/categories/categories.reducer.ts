@@ -1,8 +1,7 @@
-import { createEntityAdapter, EntityState } from '@ngrx/entity';
+import { EntityState, createEntityAdapter } from '@ngrx/entity';
 import { CategoryModel } from '../../core/interfaces/category.interface';
 import { createReducer, on } from '@ngrx/store';
-import { mappedCategoriesToEntity } from '../../core/consts/default-categories';
-import { upsertCategory, changeCategory, loadCategoriesSuccess, removeCategory } from './categories.actions';
+import { changeCategory, loadCategoriesSuccess, removeCategory, upsertCategory } from './categories.actions';
 import { generateId } from '../../core/utils/generate-id.util';
 
 export const categoriesFeatureKey = 'categories';
