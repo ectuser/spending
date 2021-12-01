@@ -20,5 +20,6 @@ const initialState: SettingsState = {
 export const settingsReducer = createReducer(
   initialState,
   on(settingsActions.periodNumberBack, (state): SettingsState => ({ ...state, periodNumber: state.periodNumber + 1 })),
-  on(settingsActions.periodNumberNext, (state): SettingsState => ({ ...state, periodNumber: state.periodNumber - 1 }))
+  on(settingsActions.periodNumberNext, (state): SettingsState => ({ ...state, periodNumber: state.periodNumber - 1 })),
+  on(settingsActions.selectPeriod, (state, { period }): SettingsState => ({ ...state, period }))
 );

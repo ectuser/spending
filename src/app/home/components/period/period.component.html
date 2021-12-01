@@ -1,7 +1,25 @@
 <div *ngIf="currentPeriod$ | async as currentPeriod" class="period">
-  <span (click)="periodBack()">L</span>
-  <span>{{currentPeriod.fromDate | date: 'dd.MM.yyyy'}}</span>
-  <span>&nbsp;-&nbsp;</span>
-  <span>{{currentPeriod.toDate | date: 'dd.MM.yyyy'}}</span>
-  <span (click)="periodNext()">R</span>
+  <tui-svg class="period__arrow" src="tuiIconArrowLeft" (click)="periodBack()"></tui-svg>
+  <tui-hosted-dropdown [content]="dropdown">
+    <button tuiButton class="period__dates">
+      <span>{{currentPeriod.fromDate | date: 'dd.MM.yyyy'}}</span>
+      <span>&nbsp;-&nbsp;</span>
+      <span>{{currentPeriod.toDate | date: 'dd.MM.yyyy'}}</span>
+    </button>
+  </tui-hosted-dropdown>
+  <tui-svg class="period__arrow" src="tuiIconArrowRight" (click)="periodNext()"></tui-svg>
 </div>
+
+<ng-template #dropdown>
+  <tui-data-list>
+    <button
+      tuiOption
+      *ngFor="let period of periods"
+      (click)="selectPeriod(period)"
+      [attr.aria-checked]="period === (selectedPeriod$ | async)"
+    >
+      <tui-svg *ngIf="period === (selectedPeriod$ | async)" src="tuiIconCheckLarge"></tui-svg>
+      {{period}}
+    </button>
+  </tui-data-list>
+</ng-template>
