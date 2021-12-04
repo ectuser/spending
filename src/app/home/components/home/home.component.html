@@ -1,5 +1,6 @@
 <div class="content">
   <app-period></app-period>
+  <h1 class="content__total">{{total$ | async}}</h1>
   <app-category-card class="card" *ngFor="let category of (categories$ | async)" [category]="category"></app-category-card>
 
   <section class="content__buttons">

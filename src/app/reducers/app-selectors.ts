@@ -30,3 +30,7 @@ export const selectCategoriesWithSpending = createSelector(selectAllCategories, 
 export const selectSortedCategoriesWithSpending = createSelector(selectCategoriesWithSpending, (categories) =>
   categories.sort((a, b) => (a.amount > b.amount ? -1 : b.amount > a.amount ? 1 : 0))
 );
+
+export const selectTotalByDates = createSelector(selectSpendingByDates, (spending) => {
+  return spending.reduce((curr, next) => curr + next.amount, 0);
+});

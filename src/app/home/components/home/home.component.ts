@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectSortedCategoriesWithSpending } from '../../../reducers/app-selectors';
+import { selectSortedCategoriesWithSpending, selectTotalByDates } from '../../../reducers/app-selectors';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +10,7 @@ import { selectSortedCategoriesWithSpending } from '../../../reducers/app-select
 })
 export class HomeComponent {
   readonly categories$ = this.store.select(selectSortedCategoriesWithSpending);
+  readonly total$ = this.store.select(selectTotalByDates);
 
   constructor(private store: Store) {}
 }
