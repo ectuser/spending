@@ -4,6 +4,7 @@ import { selectAllSpending } from './spending/spending.selectors';
 import { CategoryCard } from '../core/interfaces/category-card.interface';
 import { selectCurrentPeriodDates } from './settings/settings.selectors';
 import * as dayjs from 'dayjs';
+import { sumByProperty } from '../core/utils/arrays.utils';
 
 export const selectSpendingByDates = createSelector(selectCurrentPeriodDates, selectAllSpending, (dates, spending) => {
   return spending.filter((el) => {
@@ -32,5 +33,5 @@ export const selectSortedCategoriesWithSpending = createSelector(selectCategorie
 );
 
 export const selectTotalByDates = createSelector(selectSpendingByDates, (spending) => {
-  return spending.reduce((curr, next) => curr + next.amount, 0);
+  return sumByProperty(spending, 'amount');
 });

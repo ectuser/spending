@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "start-pwa": "ng build && http-server -p 8080 -c-1 dist/my-spending",
+    "serve-pwa": "http-server -p 8080 -c-1 dist/my-spending",
     "test": "ng test",
     "lint": "ng lint",
     "prepare": "husky install"
@@ -20,6 +22,7 @@
     "@angular/platform-browser": "~12.1.2",
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
+    "@angular/service-worker": "~12.1.2",
     "@ngrx/effects": "^12.3.0",
     "@ngrx/entity": "^12.3.0",
     "@ngrx/router-store": "^12.3.0",

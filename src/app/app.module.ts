@@ -14,6 +14,7 @@ import { reducers } from './reducers';
 import { CategoriesEffects } from './reducers/categories/categories.effects';
 import { SpendingEffects } from './reducers/spending/spending.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,12 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([CategoriesEffects, SpendingEffects]),
     StoreRouterConnectingModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
