@@ -1,17 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { TuiDay } from '@taiga-ui/cdk';
 import { CategoryModel } from '../../../core/interfaces/category.interface';
-import { TuiInputNumberComponent } from '@taiga-ui/kit';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateSpending } from '../../../core/interfaces/create-spending.interface';
 
@@ -21,7 +10,7 @@ import { CreateSpending } from '../../../core/interfaces/create-spending.interfa
   styleUrls: ['./expense-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ExpenseFormComponent implements OnInit, OnChanges {
+export class ExpenseFormComponent implements OnChanges {
   @Input() date?: TuiDay;
   @Input() categoryId?: string;
   @Input() amount?: number;
@@ -33,15 +22,6 @@ export class ExpenseFormComponent implements OnInit, OnChanges {
     amount: new FormControl(0, Validators.required),
     date: new FormControl(),
   });
-
-  @ViewChild('amountInput')
-  amountInput?: TuiInputNumberComponent;
-
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.amountInput?.nativeFocusableElement?.focus();
-    });
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.date?.currentValue) {

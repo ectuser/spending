@@ -20,7 +20,10 @@ export const selectCategoriesWithSpending = createSelector(selectAllCategories, 
       id: category.id,
       name: category.name,
       icon: category.icon,
-      amount: sp.filter((spending) => spending.categoryId === category.id).reduce((curr, next) => curr + (next.amount || 0), 0),
+      amount: sumByProperty(
+        sp.filter((spending) => spending.categoryId === category.id),
+        'amount'
+      ),
       percent: 0,
     };
     obj.percent = obj.amount / total;

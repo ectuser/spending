@@ -1,1 +1,8 @@
-<p>settings works!</p>
+<div class="settings">
+  <h1>Settings</h1>
+
+  <div class="settings__link" *ngFor="let link of links" [routerLink]="[link.link]">
+    <span>{{link.text}}</span>
+    <tui-svg class="settings__link-icon" src="tuiIconChevronRight"></tui-svg>
+  </div>
+</div>

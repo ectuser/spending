@@ -8,6 +8,6 @@
       </tui-data-list>
     </ng-template>
   </tui-select>
-  <tui-input-number class="form__item" #amountInput formControlName="amount">Your spending</tui-input-number>
+  <tui-input-number class="form__item" formControlName="amount" tuiAutoFocus>Your spending</tui-input-number>
   <button tuiButton type="button" (click)="doAction()" class="form__button">Confirm</button>
 </div>

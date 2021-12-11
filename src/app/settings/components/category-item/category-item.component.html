@@ -1,0 +1,24 @@
+<tui-island>
+  <tui-input-inline
+    *ngIf="(editing$ | async) === true; else text"
+    [formControl]="control"
+    (focusedChange)="onFocusedChange($event)"
+    (keydown.esc.prevent)="toggle()"
+    (keydown.enter.prevent)="toggle()"
+    >{{category?.name}}</tui-input-inline
+  >
+</tui-island>
+
+<ng-template #text>
+  <span>{{control.value}}</span>
+  <button
+    tuiIconButton
+    type="button"
+    title="Edit heading"
+    size="xs"
+    appearance="icon"
+    icon="tuiIconEdit"
+    class="tui-space_left-1"
+    (click)="toggle()"
+  ></button>
+</ng-template>

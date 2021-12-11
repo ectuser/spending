@@ -1,0 +1,20 @@
+.settings {
+  &__link {
+    cursor: pointer;
+    padding: 20px 5px;
+    border-bottom: solid 1px #c8c8c8;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #494949;
+    transition: 0.4s;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+  }
+
+  &__link-icon {
+    color: gray;
+  }
+}
