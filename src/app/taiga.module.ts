@@ -43,6 +43,7 @@ const modules = [
   TuiInputInlineModule,
   TuiNotificationsModule,
   TuiAutoFocusModule,
+  TuiDialogModule,
 ];
 
 @NgModule({

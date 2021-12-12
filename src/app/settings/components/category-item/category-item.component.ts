@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
@@ -8,6 +9,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { CategoryModel } from '../../../core/interfaces/category.interface';
 import { FormControl, Validators } from '@angular/forms';
@@ -24,6 +26,11 @@ export class CategoryItemComponent implements OnChanges, OnInit, OnDestroy {
   @Input() category?: CategoryModel;
 
   @Output() categoryNameChanged = new EventEmitter<{ id: string; name: string }>();
+  @Output() categoryDeleted = new EventEmitter<string>();
+
+  @ViewChild('input') input?: ElementRef;
+
+  dialogOpened = false;
 
   readonly control = new FormControl('', Validators.required);
   readonly editing$ = new BehaviorSubject(false);
@@ -32,7 +39,12 @@ export class CategoryItemComponent implements OnChanges, OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.editing$.pipe(skip(1), takeUntil(this.unsubscribe$)).subscribe((status) => {
-      if (!status) {
+      if (status) {
+        setTimeout(() => {
+          const input = this.input?.nativeElement?.querySelector('input');
+          input?.focus();
+        }, 100);
+      } else {
         this.save();
       }
     });
@@ -57,6 +69,16 @@ export class CategoryItemComponent implements OnChanges, OnInit, OnDestroy {
   onFocusedChange(focused: boolean): void {
     if (!focused) {
       this.editing$.next(false);
+    }
+  }
+
+  showDialog(): void {
+    this.dialogOpened = true;
+  }
+
+  deleteCategory(): void {
+    if (this.category) {
+      this.categoryDeleted.emit(this.category.id);
     }
   }
 

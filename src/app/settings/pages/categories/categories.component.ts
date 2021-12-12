@@ -15,4 +15,8 @@ export class CategoriesComponent {
   changeCategoryName(category: { id: string; name: string }): void {
     this.store.dispatch(CategoriesActions.changeCategory({ category: { changes: category, id: category.id } }));
   }
+
+  deleteCategory(id: string): void {
+    this.store.dispatch(CategoriesActions.removeCategory({ id }));
+  }
 }

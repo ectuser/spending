@@ -2,6 +2,10 @@
   <h1>Categories</h1>
 
   <div class="categories__item" *ngFor="let item of (categories$ | async)">
-    <app-category-item [category]="item" (categoryNameChanged)="changeCategoryName($event)"></app-category-item>
+    <app-category-item
+      [category]="item"
+      (categoryNameChanged)="changeCategoryName($event)"
+      (categoryDeleted)="deleteCategory($event)"
+    ></app-category-item>
   </div>
 </div>

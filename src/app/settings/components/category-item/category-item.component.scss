@@ -1,0 +1,11 @@
+.item {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__dialog {
+    display: flex;
+    justify-content: space-between;
+  }
+}

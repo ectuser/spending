@@ -1,24 +1,47 @@
-<tui-island>
-  <tui-input-inline
-    *ngIf="(editing$ | async) === true; else text"
-    [formControl]="control"
-    (focusedChange)="onFocusedChange($event)"
-    (keydown.esc.prevent)="toggle()"
-    (keydown.enter.prevent)="toggle()"
-    >{{category?.name}}</tui-input-inline
-  >
+<tui-island class="item">
+  <div #input class="item__content">
+    <tui-input-inline
+      *ngIf="(editing$ | async) === true; else text"
+      [formControl]="control"
+      (focusedChange)="onFocusedChange($event)"
+      (keydown.esc.prevent)="toggle()"
+      (keydown.enter.prevent)="toggle()"
+    >
+      {{category?.name}}
+    </tui-input-inline>
+    <button
+      tuiIconButton
+      type="button"
+      title="Delete category"
+      appearance="icon"
+      icon="tuiIconTrash"
+      size="xs"
+      (click)="showDialog()"
+    ></button>
+  </div>
 </tui-island>
 
 <ng-template #text>
-  <span>{{control.value}}</span>
-  <button
-    tuiIconButton
-    type="button"
-    title="Edit heading"
-    size="xs"
-    appearance="icon"
-    icon="tuiIconEdit"
-    class="tui-space_left-1"
-    (click)="toggle()"
-  ></button>
+  <div>
+    <span>{{control.value}}</span>
+    <button
+      tuiIconButton
+      type="button"
+      title="Edit category name"
+      size="xs"
+      appearance="icon"
+      icon="tuiIconEdit"
+      class="tui-space_left-1"
+      (click)="toggle()"
+    ></button>
+  </div>
+</ng-template>
+
+<ng-template let-observer [(tuiDialog)]="dialogOpened">
+  <h2>Attention!</h2>
+  <p>Do you want to delete the category?</p>
+  <div class="item__dialog">
+    <button tuiButton type="button" size="m" (click)="observer.complete(); deleteCategory()">Yes</button>
+    <button tuiButton type="button" size="m" (click)="observer.complete()">Cancel</button>
+  </div>
 </ng-template>
