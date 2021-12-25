@@ -5,12 +5,15 @@ import { CategoriesState, categoriesFeatureKey, categoriesReducer } from './cate
 import { RouterReducerState, routerReducer } from '@ngrx/router-store';
 import { routerFeatureKey } from './router/router.selectors';
 import { SettingsState, settingsFeatureKey, settingsReducer } from './settings/settings.reducer';
+import { appFeatureKey } from './app/app.reducer';
+import { fromApp } from './app';
 
 export interface AppState {
   [routerFeatureKey]: RouterReducerState;
   [spendingFeatureKey]: SpendingState;
   [categoriesFeatureKey]: CategoriesState;
   [settingsFeatureKey]: SettingsState;
+  [appFeatureKey]: fromApp.GlobalState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -18,6 +21,7 @@ export const reducers: ActionReducerMap<AppState> = {
   spending: spendingReducer,
   categories: categoriesReducer,
   settings: settingsReducer,
+  app: fromApp.reducer,
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

@@ -1,15 +1,15 @@
 .period {
   font-size: 20px;
   margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  &__arrow {
-    cursor: pointer;
+  &__switcher {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
   }
 
-  &__dates {
+  &__arrow {
     cursor: pointer;
   }
 }

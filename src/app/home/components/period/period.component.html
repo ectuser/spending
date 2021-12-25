@@ -1,13 +1,11 @@
-<div *ngIf="currentPeriod$ | async as currentPeriod" class="period">
-  <tui-svg class="period__arrow" src="tuiIconArrowLeft" (click)="periodBack()"></tui-svg>
-  <tui-hosted-dropdown [content]="dropdown">
-    <button tuiButton class="period__dates">
-      <span>{{currentPeriod.fromDate | date: 'dd.MM.yyyy'}}</span>
-      <span>&nbsp;-&nbsp;</span>
-      <span>{{currentPeriod.toDate | date: 'dd.MM.yyyy'}}</span>
-    </button>
-  </tui-hosted-dropdown>
-  <tui-svg class="period__arrow" src="tuiIconArrowRight" (click)="periodNext()"></tui-svg>
+<div class="period">
+  <div class="period__switcher">
+    <tui-svg class="period__arrow" src="tuiIconArrowLeft" (click)="periodBack()"></tui-svg>
+    <tui-hosted-dropdown [content]="dropdown">
+      <button tuiButton class="period__dates">{{(periodTitle$ | async)}}</button>
+    </tui-hosted-dropdown>
+    <tui-svg class="period__arrow" src="tuiIconArrowRight" (click)="periodNext()"></tui-svg>
+  </div>
 </div>
 
 <ng-template #dropdown>

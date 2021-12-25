@@ -1,5 +1,5 @@
 import { selectTotalByDates } from './app-selectors';
-import { Spending } from '../core/classes/spending';
+import { Spending } from '../../core/classes/spending';
 
 describe('#selectTotalByDates', () => {
   it('should return sum of array of Spending by amount property', () => {

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectSortedCategoriesWithSpending, selectTotalByDates } from '../../../reducers/app-selectors';
+import { selectSortedCategoriesWithSpending, selectTotalByDates } from '../../../reducers/app/app-selectors';
 
 @Component({
   selector: 'app-home',

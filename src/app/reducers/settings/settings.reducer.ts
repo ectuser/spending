@@ -20,5 +20,11 @@ export const settingsReducer = createReducer(
   initialState,
   on(settingsActions.periodNumberBack, (state): SettingsState => ({ ...state, periodNumber: state.periodNumber + 1 })),
   on(settingsActions.periodNumberNext, (state): SettingsState => ({ ...state, periodNumber: state.periodNumber - 1 })),
-  on(settingsActions.selectPeriod, (state, { period }): SettingsState => ({ ...state, period, periodNumber: 0 }))
+  on(settingsActions.selectPeriod, (state, { period }): SettingsState => ({ ...state, period, periodNumber: 0 })),
+  on(settingsActions.loadSettingsSuccess, (state, { settings }): SettingsState => {
+    return {
+      ...state,
+      period: settings.period,
+    };
+  })
 );

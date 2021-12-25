@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadCategories } from './reducers/categories/categories.actions';
-import { loadSpending } from './reducers/spending/spending.actions';
+import { appActions } from './reducers/app';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,6 @@ export class AppComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch(loadCategories());
-    this.store.dispatch(loadSpending());
+    this.store.dispatch(appActions.appComponentLoaded());
   }
 }

@@ -1,10 +1,10 @@
 import { createSelector } from '@ngrx/store';
-import { selectAllCategories } from './categories/categories.selectors';
-import { selectAllSpending } from './spending/spending.selectors';
-import { CategoryCard } from '../core/interfaces/category-card.interface';
-import { selectCurrentPeriodDates } from './settings/settings.selectors';
+import { selectAllCategories } from '../categories/categories.selectors';
+import { selectAllSpending } from '../spending/spending.selectors';
+import { CategoryCard } from '../../core/interfaces/category-card.interface';
+import { selectCurrentPeriodDates } from '../settings/settings.selectors';
 import * as dayjs from 'dayjs';
-import { sumByProperty } from '../core/utils/arrays.utils';
+import { sumByProperty } from '../../core/utils/arrays.utils';
 
 export const selectSpendingByDates = createSelector(selectCurrentPeriodDates, selectAllSpending, (dates, spending) => {
   return spending.filter((el) => {

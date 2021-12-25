@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectCurrentPeriodDates, selectPeriod } from '../../../reducers/settings/settings.selectors';
 import { settingsActions } from '../../../reducers/settings/settings.actions';
 import { periods } from '../../../core/consts/periods';
 import { PeriodType } from '../../../core/types/period.type';
+import { settingsSelectors } from '../../../reducers/settings';
 
 @Component({
   selector: 'app-period',
@@ -12,8 +12,8 @@ import { PeriodType } from '../../../core/types/period.type';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PeriodComponent {
-  readonly currentPeriod$ = this.store.select(selectCurrentPeriodDates);
-  readonly selectedPeriod$ = this.store.select(selectPeriod);
+  readonly selectedPeriod$ = this.store.select(settingsSelectors.selectPeriod);
+  readonly periodTitle$ = this.store.select(settingsSelectors.selectCurrentPeriodTitle);
 
   readonly periods = periods;
 

@@ -15,6 +15,8 @@ import { CategoriesEffects } from './reducers/categories/categories.effects';
 import { SpendingEffects } from './reducers/spending/spending.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { SettingsEffects } from './reducers/settings/settings.effects';
+import { AppEffects } from './reducers/app/app.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +28,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     SharedModule,
     StoreModule.forRoot(reducers, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([CategoriesEffects, SpendingEffects]),
+    EffectsModule.forRoot([CategoriesEffects, SpendingEffects, SettingsEffects, AppEffects]),
     StoreRouterConnectingModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
