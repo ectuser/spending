@@ -3,6 +3,9 @@ import { TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
+import { cold, hot } from 'jest-marbles';
+import { appComponentLoaded } from './app.actions';
+import { CategoriesActions } from '../categories';
 
 describe('AppEffects', () => {
   let effects: AppEffects;
@@ -28,6 +31,10 @@ describe('AppEffects', () => {
 
   describe('#appComponentLoadedCategories$', () => {
     it('should return loadCategories action', function() {
+      actions$ = hot('a|', {a: appComponentLoaded()});
+      const expected$ = cold('b|', {b: CategoriesActions.loadCategories()});
+
+      expect(effects.appComponentLoadedCategories$).toBeObservable(expected$);
     });
   });
 })

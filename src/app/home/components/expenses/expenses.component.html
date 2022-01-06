@@ -1,5 +1,5 @@
 <div>
-  <h1>{{(category$ | async)?.name}}</h1>
+  <h1 *ngIf="(category$ | async) as category">{{category?.name}}</h1>
   <h3>Total: {{total$ | async}}</h3>
   <app-expense-card
     *ngFor="let expense of (expenses$ | async)"
