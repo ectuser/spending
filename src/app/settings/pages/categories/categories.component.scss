@@ -1,4 +1,11 @@
 .categories {
+  &__title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 16px;
+  }
+
   &__item {
     &:not(:last-child) {
       margin-bottom: 8px;

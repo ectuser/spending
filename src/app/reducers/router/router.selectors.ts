@@ -1,5 +1,6 @@
-import { createFeatureSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { RouterReducerState, getSelectors } from '@ngrx/router-store';
+import { PageType } from '../../core/enums/page-type.enum';
 
 export const routerFeatureKey = 'router';
 
@@ -15,3 +16,8 @@ export const {
   selectRouteData, // select the current route data
   selectUrl, // select the current url
 } = getSelectors(selectRouter);
+
+export const selectPageType = createSelector(selectRouteData, (data) => {
+  const pageType: PageType | undefined = data.pageType;
+  return pageType;
+});

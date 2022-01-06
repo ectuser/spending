@@ -1,5 +1,17 @@
 <div class="categories">
-  <h1>Categories</h1>
+  <div class="categories__title-container">
+    <h1>Categories</h1>
+    <button
+      class="categories__add-btn"
+      tuiIconButton
+      type="button"
+      title="Add new category"
+      appearance="icon"
+      icon="tuiIconPlus"
+      size="xs"
+      [routerLink]="['new']"
+    ></button>
+  </div>
 
   <div class="categories__item" *ngFor="let item of (categories$ | async)">
     <app-category-item
