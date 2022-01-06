@@ -1,23 +1,9 @@
 <div class="period">
   <div class="period__switcher">
     <tui-svg class="period__arrow" src="tuiIconArrowLeft" (click)="periodBack()"></tui-svg>
-    <tui-hosted-dropdown [content]="dropdown">
-      <button tuiButton class="period__dates">{{(periodTitle$ | async)}}</button>
-    </tui-hosted-dropdown>
+    <tui-tabs class="period__tabs" [activeItemIndex]="(selectedPeriodIndex$ | async) || 0">
+      <button *ngFor="let period of periods" (click)="selectPeriod(period)" tuiTab>{{period}}</button>
+    </tui-tabs>
     <tui-svg class="period__arrow" src="tuiIconArrowRight" (click)="periodNext()"></tui-svg>
   </div>
 </div>
-
-<ng-template #dropdown>
-  <tui-data-list>
-    <button
-      tuiOption
-      *ngFor="let period of periods"
-      (click)="selectPeriod(period)"
-      [attr.aria-checked]="period === (selectedPeriod$ | async)"
-    >
-      <tui-svg *ngIf="period === (selectedPeriod$ | async)" src="tuiIconCheckLarge"></tui-svg>
-      {{period}}
-    </button>
-  </tui-data-list>
-</ng-template>

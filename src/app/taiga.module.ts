@@ -20,6 +20,7 @@ import {
   TuiIslandModule,
   TuiMarkerIconModule,
   TuiSelectModule,
+  TuiTabsModule,
 } from '@taiga-ui/kit';
 import { TuiAutoFocusModule } from '@taiga-ui/cdk';
 
@@ -44,6 +45,7 @@ const modules = [
   TuiNotificationsModule,
   TuiAutoFocusModule,
   TuiDialogModule,
+  TuiTabsModule,
 ];
 
 @NgModule({

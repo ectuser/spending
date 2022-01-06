@@ -2,10 +2,14 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { SettingsState, settingsFeatureKey } from './settings.reducer';
 import * as dayjs from 'dayjs';
 import { LocalstorageSettingsModel } from './localstorage-settings.model';
+import { periods } from '../../core/consts/periods';
 
 const selectSettingsState = createFeatureSelector<SettingsState>(settingsFeatureKey);
 
 export const selectPeriod = createSelector(selectSettingsState, (state) => state.period);
+export const selectPeriodIndex = createSelector(selectPeriod, (period) => {
+  return periods.indexOf(period);
+});
 export const selectDatesRaw = createSelector(selectSettingsState, ({ fromDate, toDate }) => ({ fromDate, toDate }));
 export const selectPeriodNumber = createSelector(selectSettingsState, (state) => state.periodNumber);
 export const selectCurrentPeriodDates = createSelector(selectPeriod, selectPeriodNumber, (period, currentPeriod) => {
